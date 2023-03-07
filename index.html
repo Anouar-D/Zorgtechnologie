@@ -163,6 +163,7 @@
 					console.log("thumbstickdown", e.target.id);
 					//Start pointing position to teleport  
 					this.emit('teleportstart');
+					console.log("Emitted TeleportStart");
 				});
 				
 				//Called when thumbstickup
@@ -171,6 +172,7 @@
 					console.log("thumbstickup", e.target.id);                    
 					//Jump to pointed position
 					this.emit('teleportend');
+					console.log("Emitted Teleported");
 				});
 				/* End Teleporting */
 			},

@@ -1,159 +1,177 @@
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/deprecated/Geometry.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <head>
+      <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+      <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/deprecated/Geometry.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene physics="debug: true">
-      <!-- Camera -->
-      <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
-      <!-- Begin Hand controls -->
-      <a-entity
-        id="leftHand"
-        input-listen
-        laser-controls="hand: left"
-        raycaster="lineColor: red; far:10"
-        static-body="shape: sphere; sphereRadius: 0.02;"
-        sphere-collider="objects: .botsen;"
-        teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
-        grab
-      ></a-entity>
-      <a-entity
-        id="rightHand"
-        input-listen
-        laser-controls="hand: right"
-        raycaster="lineColor: red; far:10"
-        static-body="shape: sphere; sphereRadius: 0.02;"
-        sphere-collider="objects: .botsen;"
-        teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
-co        grab
-      ></a-entity>
-      <!-- End Hand Controls -->
+      <a-scene physics="debug: true">
+        <!-- Camera -->
+        <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
+        <!-- Begin Hand controls -->
+        <a-entity
+        	id="leftHand"
+        	input-listen
+        	laser-controls="hand: left"
+        	raycaster="lineColor: red; far:10"
+        	static-body="shape: sphere; sphereRadius: 0.02;"
+        	sphere-collider="objects: .botsen;"
+        	teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
+        	grab
+      	></a-entity>
+		<a-entity
+			id="rightHand"
+			input-listen
+			laser-controls="hand: right"
+			raycaster="lineColor: red; far:10"
+			static-body="shape: sphere; sphereRadius: 0.02;"
+			sphere-collider="objects: .botsen;"
+			teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
+			grab
+		></a-entity>
+      	<!-- End Hand Controls -->
       
-      <!-- Left Box -->
-      <a-box 
-         position="-1 2 -3" 
-         rotation="0 0 0" 
-         color="#4CC3D9"
-         static-body
-       ></a-box>
-      <!-- Middel Box -->
-      <a-box 
-         position="0 2 -5" 
-         rotation="45 0 45" 
-         color="#4CC3D9"
-         static-body
-       ></a-box>
-      <!-- Right Box -->
-      <a-box 
-         position="1 2 -3" 
-         rotation="0 0 0" 
-         color="#4CC3D9"
-         static-body
-       ></a-box>
+		<!-- Left Box -->
+		<a-box 
+			position="-1 2 -3" 
+			rotation="0 0 0" 
+			color="#4CC3D9"
+			static-body
+		></a-box>
+		<!-- Middel Box -->
+		<a-box 
+			position="0 2 -5" 
+			rotation="45 0 45" 
+			color="#4CC3D9"
+			static-body
+		></a-box>
+		<!-- Right Box -->
+		<a-box 
+			position="1 2 -3" 
+			rotation="0 0 0" 
+			color="#4CC3D9"
+			static-body
+		></a-box>
       
-      <!-- Rigid Boxes -->
-      <a-box 
-         class="cube" 
-         dynamic-body 
-         position="0 6.25 -3" 
-         rotation="45 0 45" 
-         width="0.5" 
-         height="0.5" 
-         depth="0.5" 
-         color="red"
-       ></a-box>
-      <a-box 
-         class="cube" 
-         dynamic-body 
-         position="-1 10.25 -3"  
-         width="0.5" 
-         height="0.5" 
-         depth="0.5"
-         color="green"
+		<!-- Rigid Boxes -->
+		<a-box 
+			class="cube" 
+			dynamic-body 
+			position="0 6.25 -3" 
+			rotation="45 0 45" 
+			width="0.5" 
+			height="0.5" 
+			depth="0.5" 
+			color="red"
+		></a-box>
+      
+		<a-box 
+			class="cube" 
+			dynamic-body 
+			position="-1 10.25 -3"  
+			width="0.5" 
+			height="0.5" 
+			depth="0.5"
+			color="green"
         ></a-box>
-      <a-box 
-         class="cube" 
-         dynamic-body 
-         position="1 10.25 -3" 
-         width="0.5" 
-         height="0.5" 
-         depth="0.5" 
-         color="blue"
-       ></a-box>      
       
-      <!-- Floor -->
-      <a-plane 
-         position="0 0 -4" 
-         rotation="-90 0 0"       
-         width="7" 
-         height="7" 
-         color="#7BC8A4"
-         static-body
-       ></a-plane>
-      <!-- Pretty Sky -->
-      <a-sky color="#ECECEC"></a-sky>
+		<a-box 
+			class="cube" 
+			dynamic-body 
+			position="1 10.25 -3" 
+			width="0.5" 
+			height="0.5" 
+			depth="0.5" 
+			color="blue"
+		></a-box>      
       
+		<!-- Floor -->
+		<a-plane 
+			position="0 0 -4" 
+			rotation="-90 0 0"       
+			width="7" 
+			height="7" 
+			color="#7BC8A4"
+			static-body
+		></a-plane>
+      	<!-- Pretty Sky -->
+      	<a-sky color="#ECECEC"></a-sky>
     </a-scene>
 
     <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-physics-system@v2.1.0/dist/aframe-physics-system.min.js"></script>
     <script>
-      AFRAME.registerComponent("input-listen", {
-        init: function () {
-          /* Basic controller Features */
-          //Called when trigger is pressed
-          //squeeze button in WebXR debugger
-          this.el.addEventListener("triggerdown", function (e) {
-            console.log("triggerdown", e.target.id);
-          });
-          this.el.addEventListener("triggerup", function (e) {
-            console.log("triggerup", e.target.id);
-          });
-          this.el.addEventListener("thumbstickmoved", function (e) {
-            console.log("thumbstickmoved", e.target.id);
-          });
-          /* End Basic controller Features */
-          
-          /* Hitboxes */
-          this.hitEl;
-          this.el.addEventListener("hit", function(e){    
-            //haal het element op waar we tegenaan zitten
-            const hitEl = e.detail.el;
-            //check of het element null is
-            if (!hitEl || this.hitEl|| hitEl.attributes.color.value == "purple") { return; }
-            if(this.grab){
-              console.log("hit");
-              console.log(hitEl.attributes.color.value);
-              hitEl.attributes.color.value = "purple";
-              console.log(hitEl.attributes.color.value);  
-            }
-                      });
-          /* End Hitboxes */
-          
-          /* Grabbing Objects */
-          this.el.grab = false;
-          
-          //Called when trigger is pressed 
-          //squeeze button in WebXR debugger
-          this.el.addEventListener("triggerdown", function (e) {
-            console.log("triggerdown", e.target.id);
-            //Setting grab flag as true.
-            this.grab = true;
-          });
-          
-          //Called when trigger is release 
-          //squeeze button in WebXR debugger
-          this.el.addEventListener("triggerup", function (e) {
-            console.log("triggerup", e.target.id);
-            //Setting grab flag as false.
-            this.grab = false;
-          });
-          /* End Grabbing Objects */ 
-        },
-      });
-      
+		AFRAME.registerComponent("input-listen", {
+			init: function () {
+				/* Basic controller Features */
+				//Called when trigger is pressed
+				//squeeze button in WebXR debugger
+				this.el.addEventListener("triggerdown", function (e) {
+					console.log("triggerdown", e.target.id);
+				});
+				this.el.addEventListener("triggerup", function (e) {
+					console.log("triggerup", e.target.id);
+				});
+				this.el.addEventListener("thumbstickmoved", function (e) {
+					console.log("thumbstickmoved", e.target.id);
+				});
+				/* End Basic controller Features */
+				
+				/* Hitboxes */
+				this.hitEl;
+				this.el.addEventListener("hit", function(e){    
+					//haal het element op waar we tegenaan zitten
+					const hitEl = e.detail.el;
+					//check of het element null is
+					if (!hitEl || this.hitEl|| hitEl.attributes.color.value == "purple") { return; }
+					if(this.grab){
+						console.log("hit");
+						console.log(hitEl.attributes.color.value);
+						hitEl.attributes.color.value = "purple";
+						console.log(hitEl.attributes.color.value);  
+					}
+				});
+				/* End Hitboxes */
+			
+				/* Grabbing Objects */
+				this.el.grab = false;
+				
+				//Called when trigger is pressed 
+				//squeeze button in WebXR debugger
+				this.el.addEventListener("triggerdown", function (e) {
+					console.log("triggerdown", e.target.id);
+					//Setting grab flag as true.
+					this.grab = true;
+				});
+			
+				//Called when trigger is release 
+				//squeeze button in WebXR debugger
+				this.el.addEventListener("triggerup", function (e) {
+					console.log("triggerup", e.target.id);
+					//Setting grab flag as false.
+					this.grab = false;
+				});
+				/* End Grabbing Objects */ 
+				
+				/* Teleporting */
+				//Called when thumbstickdown
+				//select button in WebXR debugger
+				this.el.addEventListener("thumbstickdown", function (e) {
+					console.log("thumbstickdown", e.target.id);
+					//Start pointing position to teleport  
+					this.emit('teleportstart');
+				});
+				
+				//Called when thumbstickup
+				//select button in WebXR debugger
+				this.el.addEventListener("thumbstickup", function (e) {
+					console.log("thumbstickup", e.target.id);                    
+					//Jump to pointed position
+					this.emit('teleportend');
+				});
+				/* End Teleporting */
+			},
+		});
     </script>
   </body>
 </html>

@@ -4,7 +4,82 @@
 	<script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/deprecated/Geometry.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+	<script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-physics-system@v2.1.0/dist/aframe-physics-system.min.js"></script>
 	<script src="https://raw.githubusercontent.com/powersimple/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script>
+		AFRAME.registerComponent("input-listen", {
+			init: function () {
+				/* Basic controller Features */
+				//Called when trigger is pressed
+				//squeeze button in WebXR debugger
+				// this.el.addEventListener("triggerdown", function (e) {
+				// 	console.log("triggerdown", e.target.id);
+				// });
+				// this.el.addEventListener("triggerup", function (e) {
+				// 	console.log("triggerup", e.target.id);
+				// });
+				// this.el.addEventListener("thumbstickmoved", function (e) {
+				// 	console.log("thumbstickmoved", e.target.id);
+				// });
+				/* End Basic controller Features */
+				
+				/* Hitboxes */
+				this.hitEl;
+				this.el.addEventListener("hit", function(e){    
+					//haal het element op waar we tegenaan zitten
+					const hitEl = e.detail.el;
+					//check of het element null is
+					if (!hitEl || this.hitEl|| hitEl.attributes.color.value == "purple") { return; }
+					if(this.grab){
+						console.log("hit");
+						console.log(hitEl.attributes.color.value);
+						hitEl.attributes.color.value = "purple";
+						console.log(hitEl.attributes.color.value);  
+					}
+				});
+				/* End Hitboxes */
+			
+				/* Grabbing Objects */
+				this.el.grab = false;
+				
+				//Called when trigger is pressed 
+				//squeeze button in WebXR debugger
+				this.el.addEventListener("triggerdown", function (e) {
+					console.log("triggerdown", e.target.id);
+					//Setting grab flag as true.
+					this.grab = true;
+				});
+			
+				//Called when trigger is release 
+				//squeeze button in WebXR debugger
+				this.el.addEventListener("triggerup", function (e) {
+					console.log("triggerup", e.target.id);
+					//Setting grab flag as false.
+					this.grab = false;
+				});
+				/* End Grabbing Objects */ 
+				
+				/* Teleporting */
+				//Called when thumbstickdown
+				//select button in WebXR debugger
+				this.el.addEventListener("thumbstickdown", function (e) {
+					console.log("thumbstickdown", e.target.id);
+					//Start pointing position to teleport  
+					this.emit('teleportstart');
+				});
+				
+				//Called when thumbstickup
+				//select button in WebXR debugger
+				this.el.addEventListener("thumbstickup", function (e) {
+					console.log("thumbstickup", e.target.id);                    
+					//Jump to pointed position
+					this.emit('teleportend');
+					console.log("Emitted Teleported");
+				});
+				/* End Teleporting */
+			},
+		});
+    </script>
 </head>
 <body>
 	<a-scene physics="debug: true">
@@ -98,81 +173,5 @@
       	<!-- Pretty Sky -->
       	<a-sky color="#ECECEC"></a-sky>
     </a-scene>
-
-    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-physics-system@v2.1.0/dist/aframe-physics-system.min.js"></script>
-    <script>
-		AFRAME.registerComponent("input-listen", {
-			init: function () {
-				/* Basic controller Features */
-				//Called when trigger is pressed
-				//squeeze button in WebXR debugger
-				// this.el.addEventListener("triggerdown", function (e) {
-				// 	console.log("triggerdown", e.target.id);
-				// });
-				// this.el.addEventListener("triggerup", function (e) {
-				// 	console.log("triggerup", e.target.id);
-				// });
-				// this.el.addEventListener("thumbstickmoved", function (e) {
-				// 	console.log("thumbstickmoved", e.target.id);
-				// });
-				/* End Basic controller Features */
-				
-				/* Hitboxes */
-				this.hitEl;
-				this.el.addEventListener("hit", function(e){    
-					//haal het element op waar we tegenaan zitten
-					const hitEl = e.detail.el;
-					//check of het element null is
-					if (!hitEl || this.hitEl|| hitEl.attributes.color.value == "purple") { return; }
-					if(this.grab){
-						console.log("hit");
-						console.log(hitEl.attributes.color.value);
-						hitEl.attributes.color.value = "purple";
-						console.log(hitEl.attributes.color.value);  
-					}
-				});
-				/* End Hitboxes */
-			
-				/* Grabbing Objects */
-				this.el.grab = false;
-				
-				//Called when trigger is pressed 
-				//squeeze button in WebXR debugger
-				this.el.addEventListener("triggerdown", function (e) {
-					console.log("triggerdown", e.target.id);
-					//Setting grab flag as true.
-					this.grab = true;
-				});
-			
-				//Called when trigger is release 
-				//squeeze button in WebXR debugger
-				this.el.addEventListener("triggerup", function (e) {
-					console.log("triggerup", e.target.id);
-					//Setting grab flag as false.
-					this.grab = false;
-				});
-				/* End Grabbing Objects */ 
-				
-				/* Teleporting */
-				//Called when thumbstickdown
-				//select button in WebXR debugger
-				this.el.addEventListener("thumbstickdown", function (e) {
-					console.log("thumbstickdown", e.target.id);
-					//Start pointing position to teleport  
-					this.emit('teleportstart');
-				});
-				
-				//Called when thumbstickup
-				//select button in WebXR debugger
-				this.el.addEventListener("thumbstickup", function (e) {
-					console.log("thumbstickup", e.target.id);                    
-					//Jump to pointed position
-					this.emit('teleportend');
-					console.log("Emitted Teleported");
-				});
-				/* End Teleporting */
-			},
-		});
-    </script>
   </body>
 </html>

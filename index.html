@@ -7,30 +7,28 @@
 </head>
 <body>
 	<a-scene physics="debug: true">
-        <!-- Camera -->
-        <!-- Begin Hand controls -->
-
-		<!-- Basic movement and teleportation  -->
-		<a-entity id="cameraRig" camera look-controls>
+		<a-entity id="cameraRig" look-controls>
 			<a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
 			<a-entity
 				id="leftHand"
 				input-listen
 				laser-controls="hand: left"
-				raycaster="lineColor: red; far:10"
+				raycaster="lineColor: red; far:10; showLine=True; interval: 0;"
 				static-body="shape: sphere; sphereRadius: 0.02;"
 				sphere-collider="objects: .botsen;"
 				teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
+				visible="true"
 				grab
 			></a-entity>
 			<a-entity
 				id="rightHand"
 				input-listen
 				laser-controls="hand: right"
-				raycaster="lineColor: red; far:10"
+				raycaster="lineColor: red; far:10; showLine=True; interval: 0;"
 				static-body="shape: sphere; sphereRadius: 0.02;"
 				sphere-collider="objects: .botsen;"
 				teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
+				visible="true"
 				grab
 			></a-entity>
 		</a-entity>

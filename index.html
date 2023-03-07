@@ -8,27 +8,30 @@
 </head>
 <body>
 	<a-scene physics="debug: true">
-		<a-entity id="cameraRig" look-controls>
+		<!-- Speler/ Oculus -->
+		<a-entity id="cameraRig">
+			<!-- Camera dus je hoofd -->
 			<a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
+			<!-- linkerhand -->
 			<a-entity
-				id="leftHand"
-				input-listen
+				id="ctlL"
 				laser-controls="hand: left"
-				raycaster="lineColor: red; far:10;"
+				raycaster="lineColor: red; far:2"
+				input-listen
 				static-body="shape: sphere; sphereRadius: 0.02;"
 				sphere-collider="objects: .botsen;"
-				teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
 				grab
 			></a-entity>
+			<!-- rechterhand -->
 			<a-entity
-				id="rightHand"
-				input-listen
+				id="ctlR"
 				laser-controls="hand: right"
-				raycaster="lineColor: red; far:10;"
+				raycaster="lineColor: red; far:2"
+				input-listen
 				static-body="shape: sphere; sphereRadius: 0.02;"
 				sphere-collider="objects: .botsen;"
-				teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
 				grab
+				teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
 			></a-entity>
 		</a-entity>
       	<!-- End Hand Controls -->

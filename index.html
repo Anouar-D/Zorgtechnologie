@@ -1,35 +1,37 @@
 <html>
-    <head>
-      <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-      <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/deprecated/Geometry.js"></script>
-      <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-  </head>
-  <body>
-      <a-scene physics="debug: true">
+<head>
+	<script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+	<script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/deprecated/Geometry.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+</head>
+<body>
+	<a-scene physics="debug: true">
         <!-- Camera -->
         <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
         <!-- Begin Hand controls -->
-        <a-entity
-        	id="leftHand"
-        	input-listen
-        	laser-controls="hand: left"
-        	raycaster="lineColor: red; far:10"
-        	static-body="shape: sphere; sphereRadius: 0.02;"
-        	sphere-collider="objects: .botsen;"
-        	teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
-        	grab
-      	></a-entity>
-		<a-entity
-			id="rightHand"
-			input-listen
-			laser-controls="hand: right"
-			raycaster="lineColor: red; far:10"
-			static-body="shape: sphere; sphereRadius: 0.02;"
-			sphere-collider="objects: .botsen;"
-			teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
-			grab
-		></a-entity>
+		<a-entity camera look-controls>
+			<a-entity
+				id="leftHand"
+				input-listen
+				laser-controls="hand: left"
+				raycaster="lineColor: red; far:10"
+				static-body="shape: sphere; sphereRadius: 0.02;"
+				sphere-collider="objects: .botsen;"
+				teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
+				grab
+			></a-entity>
+			<a-entity
+				id="rightHand"
+				input-listen
+				laser-controls="hand: right"
+				raycaster="lineColor: red; far:10"
+				static-body="shape: sphere; sphereRadius: 0.02;"
+				sphere-collider="objects: .botsen;"
+				teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
+				grab
+			></a-entity>
+		</a-entity>
       	<!-- End Hand Controls -->
       
 		<!-- Left Box -->

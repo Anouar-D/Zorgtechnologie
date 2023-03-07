@@ -7,8 +7,6 @@
   </head>
   <body>
     <a-scene physics="debug: true">
-      <!-- Camera -->
-      <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
       <!-- Begin Hand controls -->
       <a-entity
         id="leftHand"
@@ -17,7 +15,6 @@
         raycaster="lineColor: red; far:10"
         static-body="shape: sphere; sphereRadius: 0.02;"
         sphere-collider="objects: .botsen;"
-        teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
         grab
       ></a-entity>
       <a-entity
@@ -27,75 +24,51 @@
         raycaster="lineColor: red; far:10"
         static-body="shape: sphere; sphereRadius: 0.02;"
         sphere-collider="objects: .botsen;"
-        teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend;"
-co        grab
+        grab
       ></a-entity>
       <!-- End Hand Controls -->
-      
-      <!-- Left Box -->
-      <a-box 
-         position="-1 2 -3" 
-         rotation="0 0 0" 
-         color="#4CC3D9"
-         static-body
-       ></a-box>
-      <!-- Middel Box -->
-      <a-box 
-         position="0 2 -5" 
-         rotation="45 0 45" 
-         color="#4CC3D9"
-         static-body
-       ></a-box>
-      <!-- Right Box -->
-      <a-box 
-         position="1 2 -3" 
-         rotation="0 0 0" 
-         color="#4CC3D9"
-         static-body
-       ></a-box>
-      
-      <!-- Rigid Boxes -->
-      <a-box 
-         class="cube" 
-         dynamic-body 
-         position="0 6.25 -3" 
-         rotation="45 0 45" 
-         width="0.5" 
-         height="0.5" 
-         depth="0.5" 
-         color="red"
-       ></a-box>
-      <a-box 
-         class="cube" 
-         dynamic-body 
-         position="-1 10.25 -3"  
-         width="0.5" 
-         height="0.5" 
-         depth="0.5"
-         color="green"
-        ></a-box>
-      <a-box 
-         class="cube" 
-         dynamic-body 
-         position="1 10.25 -3" 
-         width="0.5" 
-         height="0.5" 
-         depth="0.5" 
-         color="blue"
-       ></a-box>      
-      
-      <!-- Floor -->
-      <a-plane 
-         position="0 0 -4" 
-         rotation="-90 0 0"       
-         width="7" 
-         height="7" 
-         color="#7BC8A4"
-         static-body
-       ></a-plane>
-      <!-- Pretty Sky -->
-      <a-sky color="#ECECEC"></a-sky>
-      
+
+      <a-box
+        position="-1 2 -3"
+        rotation="0 0 0"
+        src=""
+        color="#4CC3D9"
+        static-body
+      ></a-box>
+      <a-box
+        class="botsen"
+        dynamic-body
+        position="0 6.25 -3"
+        rotation="45 0 45"
+        width="0.5"
+        height="0.5"
+        depth="0.5"
+        color="red"
+      ></a-box>
+      <a-box
+        class="botsen"
+        dynamic-body
+        position="-1 10.25 -3"
+        width="0.5"
+        height="0.5"
+        depth="0.5"
+        color="green"
+      ></a-box>
+      <a-box
+        class="botsen"
+        dynamic-body
+        position="0 5 -1"
+        width="0.5"
+        height="0.5"
+        depth="0.5"
+        color="blue"
+      ></a-box>
+      <a-plane
+        position="0 1 -1"
+        rotation="-90 0 0"
+        color="red"
+        static-body
+      ></a-plane>
     </a-scene>
 
     <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-physics-system@v2.1.0/dist/aframe-physics-system.min.js"></script>
@@ -150,7 +123,9 @@ co        grab
             //Setting grab flag as false.
             this.grab = false;
           });
-          /* End Grabbing Objects */ 
+          /* End Grabbing Objects */
+
+        
         },
       });
       

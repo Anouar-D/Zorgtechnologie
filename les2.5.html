@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #ECECEC">
+      <a-assets>
+        <a-asset-item
+          id="triceratops"
+          src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"
+          response-type="arraybuffer"
+          crossorigin="anonymous"d
+        ></a-asset-item>
+      </a-assets>
+      <a-entity
+        position="0 0 -5"
+        rotation="0 45 0"
+        scale="0.01 0.01 0.01"
+        gltf-model="#triceratops"
+        modify-materials
+      ></a-entity>
+      <a-entity
+        environment="preset: forest; groundColor: #445; grid: cross"
+      ></a-entity>
+    </a-scene>
+    <script>
+      alert(Math.random());
+    </script>
+  </body>
+</html>
